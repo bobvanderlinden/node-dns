@@ -408,6 +408,16 @@ exports.lookup_without_nameservers = function(test) {
   });
 };
 
+exports.lookup_with_nonexisting_nameserver = function(test) {
+  platform.name_servers = [{address:'10.0.8.45',port:53}];
+  dns.lookup('www.google.com', function(err) {
+    test.ok(err, 'we should fail');
+    fixupDns();
+    test.done();
+  });
+};
+
+
 /* Disabled because it appears to be not working on linux. */
 /*
 exports.lookup_localhost_ipv6 = function (test) {
