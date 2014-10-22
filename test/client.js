@@ -403,8 +403,8 @@ exports.lookup_without_nameservers = function(test) {
   dns.lookup('www.google.com', function(err) {
     test.ok(err, 'we should fail');
     test.strictEqual(err.errno, dns.TIMEOUT);
-    test.done();
     fixupDns();
+    test.done();
   });
 };
 
